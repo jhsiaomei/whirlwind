@@ -7,3 +7,25 @@ end
 
 #if answer != 5
 #"If answer does not equal 5"
+
+
+#if result != true
+#replace with unless result == true
+#yes, should run the same
+
+
+
+
+# result = false
+
+# if result != true
+#   puts 'hello'
+# end
+
+# result = false
+
+# unless result == true
+#   puts 'goodbye'
+# end
+
+
