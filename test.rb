@@ -1,13 +1,5 @@
 result = false
 
-if result != true
-  puts 'hello'
+unless result
+  puts 'HELLO!'
 end
-
-result = false
-
-unless result == true
-  puts 'goodbye'
-end
-
-

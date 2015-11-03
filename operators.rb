@@ -29,3 +29,12 @@ end
 # end
 
 
+
+
+# result = false
+
+# unless result
+#   puts 'HELLO!'
+# end
+
+#result has to be false
