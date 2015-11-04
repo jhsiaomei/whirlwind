@@ -1,9 +1,11 @@
-count = 0
-while count < 11 do
-  puts count
-  count += 1
-end
+# count = 0
+# while count < 11 do
+#   puts count
+#   count += 1
+# end
 
+
+11.times { |x| puts x }
 
 #if answer != 5
 #"If answer does not equal 5"
@@ -22,7 +24,7 @@ end
 #   puts 'hello'
 # end
 
-# result = false
+# result = false or nil 
 
 # unless result == true
 #   puts 'goodbye'
