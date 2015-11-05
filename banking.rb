@@ -26,7 +26,10 @@ input = gets.chomp
 
 acct_info.each do |acct|
   if acct[:acct_num] == input.to_i
-    p acct
+  puts "FIRST NAME: " + acct[:first_name]
+  puts "LAST NAME: " + acct[:last_name]
+  puts "EMAIL: " + acct[:e_addy]
+  puts "ACCT #: " + acct[:acct_num].to_s
   end
 end
 
