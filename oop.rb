@@ -22,13 +22,13 @@ class Profile
   attr_reader :first_name, :last_name, :mood, :age, :occupation
   attr_accessor :employer
 
-  def initialize(first_name, last_name, mood, age, occupation, employer)
-    @first_name = first_name
-    @last_name = last_name
-    @mood = mood
-    @age = age
-    @occupation = occupation
-    @employer = employer
+  def initialize(input_options)
+    @first_name = input_options[:first_name]
+    @last_name = input_options[:last_name]
+    @mood = input_options[:mood]
+    @age = input_options[:age]
+    @occupation = input_options[:occupation]
+    @employer = input_options[:employer]
   end
 
   def terminate_employment
@@ -38,7 +38,17 @@ class Profile
 
 end
 
-person = Profile.new("Alejandra", "Jimenez", "happy", 34, "programmer", "Google")
+options = {
+  first_name: "Alejandra",
+  last_name: "Jimenez",
+  mood: "happy",
+  age: 34,
+  occupation: "programmer",
+  employer: "Google"
+}
+
+person = Profile.new(options)
+# p person
 
 # puts "First Name: " + person.first_name
 # puts "Last Name: " + person.last_name
@@ -47,7 +57,7 @@ person = Profile.new("Alejandra", "Jimenez", "happy", 34, "programmer", "Google"
 # puts "Occupation: " + person.occupation
 # puts "Employer: " + person.employer
 
-puts person.terminate_employment
+person.terminate_employment
 
 # puts "First Name: " + person.first_name
 # puts "Last Name: " + person.last_name
