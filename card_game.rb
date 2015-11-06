@@ -56,6 +56,12 @@ while deck.remaining_cards > 0
   if card.check_answer(user_answer)
     puts "Correct!"
   else
-    puts "Incorrect!"
+    puts "Incorrect. Please try again:"
+    user_answer = gets.chomp
+    if card.check_answer(user_answer)
+      puts "Correct!"
+    else
+      puts "Incorrect."
+    end
   end
 end
