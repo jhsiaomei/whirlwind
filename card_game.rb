@@ -27,6 +27,7 @@ class Deck
     input_hash.each do |question, answer|
       @cards << Card.new(question, answer)
     end
+    @missed_questions = []
   end
 
   def remaining_cards
@@ -39,7 +40,6 @@ class Deck
   end
 
   def wrong_answer(card)
-    @missed_questions = []
     @missed_questions << card
   end
 
@@ -104,20 +104,11 @@ if ['y', 'yes'].include?(answer)
       else
         puts "Incorrect."
         puts "Current score: #{score}"
-        deck.wrong_answer(card)
       end
     end
   end
 else
   puts "Thanks for playing!"
 end
-
-
-
-
-
-
-
-
 
 
