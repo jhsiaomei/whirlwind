@@ -40,14 +40,15 @@ class Deck
 end
 
 trivia_data = {
-  "What is the capital of Illinois?" => "Springfield",
-  "Is Africa a country or a continent?" => "Continent",
-  "Tug of war was once an Olympic event. True or false?" => "True",
+  "What is the capital of Illinois?" => "springfield",
+  "Is Africa a country or a continent?" => "continent",
+  "Tug of war was once an Olympic event. True or false?" => "true",
   "Who is the 16th president? A. George Washington B. John Adams C. Abraham Lincoln D. James Polk" => ["c", "c. abraham lincoln", "abraham lincoln"]
 }
 
 deck = Deck.new(trivia_data) # deck is an instance of the Deck class
 
+score = 0
 
 while deck.remaining_cards > 0
   card = deck.draw_card # card is an instance of the Card class
@@ -55,13 +56,18 @@ while deck.remaining_cards > 0
   user_answer = gets.chomp
   if card.check_answer(user_answer)
     puts "Correct!"
+    score += 1
+    puts "Current score: #{score}"
   else
     puts "Incorrect. Please try again:"
     user_answer = gets.chomp
     if card.check_answer(user_answer)
       puts "Correct!"
+      score += 1
+      puts "Current score: #{score}"
     else
       puts "Incorrect."
+      puts "Current score: #{score}"
     end
   end
 end
