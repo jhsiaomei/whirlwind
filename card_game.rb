@@ -10,7 +10,15 @@ class Card
   def initialize(question, answer)
      @question = question
      @answer = answer
-   end
+  end
+
+  def check_answer(user_input)
+    if answer.class == Array
+      @answer.include?(user_input.downcase)
+    else
+      user_input == @answer
+    end
+  end
 end
 
 class Deck
@@ -34,7 +42,8 @@ end
 trivia_data = {
   "What is the capital of Illinois?" => "Springfield",
   "Is Africa a country or a continent?" => "Continent",
-  "Tug of war was once an Olympic event. True or false?" => "True"
+  "Tug of war was once an Olympic event. True or false?" => "True",
+  "Who is the 16th president? A. George Washington B. John Adams C. Abraham Lincoln D. James Polk" => ["c", "c. abraham lincoln", "abraham lincoln"]
 }
 
 deck = Deck.new(trivia_data) # deck is an instance of the Deck class
@@ -44,7 +53,7 @@ while deck.remaining_cards > 0
   card = deck.draw_card # card is an instance of the Card class
   puts card.question
   user_answer = gets.chomp
-  if user_answer.downcase == card.answer.downcase
+  if card.check_answer(user_answer)
     puts "Correct!"
   else
     puts "Incorrect!"
