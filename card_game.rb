@@ -37,6 +37,15 @@ class Deck
     @cards.shuffle!
     @cards.pop
   end
+
+  def wrong_answer(card)
+    @missed_questions = []
+    @missed_questions << card
+  end
+
+  def retry
+    @cards = @missed_questions
+  end
 end
 
 trivia_data = {
@@ -68,6 +77,47 @@ while deck.remaining_cards > 0
     else
       puts "Incorrect."
       puts "Current score: #{score}"
+      deck.wrong_answer(card)
     end
   end
 end
+
+puts "Do you want to retry your missed questions?"
+answer = gets.chomp.downcase
+if ['y', 'yes'].include?(answer)
+  deck.retry
+  while deck.remaining_cards > 0
+  card = deck.draw_card # card is an instance of the Card class
+  puts card.question
+  user_answer = gets.chomp
+    if card.check_answer(user_answer)
+      puts "Correct!"
+      score += 1
+      puts "Current score: #{score}"
+    else
+      puts "Incorrect. Please try again:"
+      user_answer = gets.chomp
+      if card.check_answer(user_answer)
+        puts "Correct!"
+        score += 1
+        puts "Current score: #{score}"
+      else
+        puts "Incorrect."
+        puts "Current score: #{score}"
+        deck.wrong_answer(card)
+      end
+    end
+  end
+else
+  puts "Thanks for playing!"
+end
+
+
+
+
+
+
+
+
+
+
